@@ -2,7 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
-## [Unreleased](https://github.com/Riley19280/changelog-test/compare/v0.1.11...HEAD)
+## [Unreleased](https://github.com/Riley19280/changelog-test/compare/v0.1.12...HEAD)
+
+## [v0.1.12](https://github.com/Riley19280/changelog-test/compare/v0.1.11...v0.1.12) - 2025-06-25
+
+### Changes
+
+- [BCP-123](https://proactivedealersolutions.atlassian.net/browse/BCP-123): Autolabeler @Riley19280 (#5)
 
 ## [v0.1.11](https://github.com/Riley19280/changelog-test/compare/v0.1.10...v0.1.11) - 2025-06-25
 
