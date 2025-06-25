@@ -23,13 +23,15 @@ version-resolver:
   minor:
     labels:
       - 'minor'
+      - 'feature'
+      - 'enhancement'
   patch:
     labels:
       - 'patch'
   default: patch
 replacers:
   - search: '/BCP-(\d+)/g'
-    replace: 'https://proactivedealersolutions.atlassian.net/browse/BCP-$1'
+    replace: '[BCP-$1](https://proactivedealersolutions.atlassian.net/browse/BCP-$1)'
 template: |
   ## Changes
 
