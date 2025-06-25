@@ -2,7 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
-## [Unreleased](https://github.com/Riley19280/changelog-test/compare/v0.1.6...HEAD)
+## [Unreleased](https://github.com/Riley19280/changelog-test/compare/v0.1.8...HEAD)
+
+## [v0.1.8](https://github.com/Riley19280/changelog-test/compare/v0.1.6...v0.1.8) - 2025-06-25
+
+### Changes
+
+* No changes
 
 ## [v0.1.6](https://github.com/Riley19280/changelog-test/compare/v0.1.5...v0.1.6) - 2025-06-25
 
