@@ -35,6 +35,7 @@ jobs:
 
       # Drafts your next Release notes as Pull Requests are merged into "master"
       - uses: release-drafter/release-drafter@v6
+        name: Create Release
         with:
           publish: true
         # (Optional) specify config name to use, relative to .github/. Default: release-drafter.yml
