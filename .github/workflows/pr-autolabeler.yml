@@ -2,7 +2,7 @@ name: Label PR Based on JIRA Issue
 
 on:
   pull_request:
-    types: [opened, synchronize]
+    types: [opened]
 
 jobs:
   label-jira:
