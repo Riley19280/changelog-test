@@ -1,0 +1,60 @@
+# .github/workflows/update-changelog.yaml
+name: "Update Changelog"
+
+on:
+  release:
+    types: [released]
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    permissions:
+      # Give the default GITHUB_TOKEN write permission to commit and push the
+      # updated CHANGELOG back to the repository.
+      # https://github.blog/changelog/2023-02-02-github-actions-updating-the-default-github_token-permissions-to-read-only/
+      contents: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.release.target_commitish }}
+
+
+      - name: Update Changelog
+        uses: stefanzweifel/changelog-updater-action@v1
+        with:
+          latest-version: ${{ github.event.release.tag_name }}
+          release-notes: ${{ github.event.release.body }}
+
+      - name: Commit updated CHANGELOG
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          branch: ${{ github.event.release.target_commitish }}
+          commit_message: Update CHANGELOG
+          file_pattern: CHANGELOG.md
+
+      - name: Set up Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          git fetch --all
+
+      - name: Merge master into develop
+        run: |
+          CURRENT_BRANCH=$(git branch --show-current)
+          if [ "$CURRENT_BRANCH" != "develop" ]; then
+            git checkout develop
+          fi
+          git pull origin develop
+          if git merge --no-ff --allow-unrelated-histories origin/master -m "Merge branch 'master' into develop"; then
+            echo "Merge successful for branch develop"
+            git push origin develop
+          else
+            echo "Merge conflict or error occurred for branch $branch. Skipping..."
+            git merge --abort
+            exit 1
+          fi
+        
