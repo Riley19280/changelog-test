@@ -4,10 +4,6 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased](https://github.com/Riley19280/changelog-test/compare/v0.1.5...HEAD)
 
-## v1.0.0 - 2025-06-24
-
-- Initial Release
-
 ## [v0.1.5](https://github.com/Riley19280/changelog-test/compare/v0.1.4...v0.1.5) - 2025-06-25
 
 ### Changes
