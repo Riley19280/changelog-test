@@ -46,7 +46,7 @@ jobs:
           echo $ISSUE_TYPE
 
           LABEL=""
-          if echo "$CAPITALIZATION" | grep -q "tech debit"; then
+          if echo "$CAPITALIZATION" | grep -q "tech debt"; then
             LABEL="maintenance"
           elif [ "$ISSUE_TYPE" = "Bug" ]; then
             LABEL="bug"
