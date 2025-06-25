@@ -40,7 +40,7 @@ jobs:
 
           # Parse fields
           ISSUE_TYPE=$(jq -r '.fields.issuetype.name' issue.json)
-          CAPITALIZATION=$(jq -r '.fields.customfield_10172 // empty' issue.json | tr '[:upper:]' '[:lower:]')
+          CAPITALIZATION=$(jq -r '.fields.customfield_10172.value // empty' issue.json | tr '[:upper:]' '[:lower:]')
 
           LABEL=""
           if echo "$CAPITALIZATION" | grep -q "tech debit"; then
@@ -51,6 +51,7 @@ jobs:
             LABEL="feature"
           fi
 
+          echo "Label is $LABEL"
           echo "label=$LABEL" >> "$GITHUB_OUTPUT"
 
       - name: Add label to PR
