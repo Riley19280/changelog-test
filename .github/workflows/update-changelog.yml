@@ -44,18 +44,18 @@ jobs:
 
       - name: Merge changelog
         run: |
-          SOURCE=develop
-          TARGET=master
+          BASE=master
+          TARGET=develop
           CURRENT_BRANCH=$(git branch --show-current)
-          if [ "$CURRENT_BRANCH" != "$TARGET" ]; then
-            git checkout develop
+          if [ "$CURRENT_BRANCH" != "$BASE" ]; then
+            git checkout $BASE
           fi
           git pull origin $TARGET
-          if git merge --no-ff --allow-unrelated-histories origin/$SOURCE -m "Merge branch '$SOURCE' into $TARGET"; then
+          if git merge --no-ff --allow-unrelated-histories origin/$TARGET -m "Merge branch '$TARGET' into $BASE"; then
             echo "Merge successful for branch $TARGET"
-            git push origin $TARGET
+            git push origin $BASE
           else
-            echo "Merge conflict or error occurred for branch $SOURCE. Skipping..."
+            echo "Merge conflict or error occurred for branch $TARGET. Skipping..."
             git merge --abort
             exit 1
           fi
