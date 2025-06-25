@@ -2,7 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
-## [Unreleased](https://github.com/Riley19280/changelog-test/compare/v0.1.12...HEAD)
+## [Unreleased](https://github.com/Riley19280/changelog-test/compare/v0.1.13...HEAD)
+
+## [v0.1.13](https://github.com/Riley19280/changelog-test/compare/v0.1.12...v0.1.13) - 2025-06-25
+
+### Changes
+
+### 🧰 Maintenance
+
+- [BCP-123](https://proactivedealersolutions.atlassian.net/browse/BCP-123): Add feature @Riley19280 (#6)
 
 ## [v0.1.12](https://github.com/Riley19280/changelog-test/compare/v0.1.11...v0.1.12) - 2025-06-25
 
