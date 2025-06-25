@@ -37,8 +37,6 @@ jobs:
             "${{ secrets.JIRA_BASE_URL }}/rest/api/3/issue/$ISSUE_KEY")
 
           echo "$RESPONSE" > issue.json
-          
-          echo $RESPONSE
 
           # Parse fields
           ISSUE_TYPE=$(jq -r '.fields.issuetype.name' issue.json)
