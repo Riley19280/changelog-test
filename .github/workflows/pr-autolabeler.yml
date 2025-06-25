@@ -48,6 +48,8 @@ jobs:
           LABEL=""
           if echo "$CAPITALIZATION" | grep -q "tech debt"; then
             LABEL="maintenance"
+          elif echo "$CAPITALIZATION" | grep -q "bug"; then
+            LABEL="bug"
           elif [ "$ISSUE_TYPE" = "Bug" ]; then
             LABEL="bug"
           else
