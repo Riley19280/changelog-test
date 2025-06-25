@@ -12,6 +12,7 @@ categories:
       - 'bug'
   - title: '🧰 Maintenance'
     labels:
+      - 'maintenance'
       - 'chore'
       - 'tech debt'
 change-template: '- $TITLE @$AUTHOR (#$NUMBER)'
