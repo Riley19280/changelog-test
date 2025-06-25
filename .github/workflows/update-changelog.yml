@@ -28,13 +28,6 @@ jobs:
           latest-version: ${{ github.event.release.tag_name }}
           release-notes: ${{ github.event.release.body }}
 
-      - name: Commit updated CHANGELOG
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          branch: ${{ github.event.release.target_commitish }}
-          commit_message: Update CHANGELOG
-          file_pattern: CHANGELOG.md
-
       - name: Set up Git
         run: |
           git config --global user.name "github-actions[bot]"
@@ -42,18 +35,27 @@ jobs:
           
           git fetch --all
 
-      - name: Merge master into develop
+      - name: Commit updated CHANGELOG
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          branch: develop
+          commit_message: Update CHANGELOG
+          file_pattern: CHANGELOG.md
+
+      - name: Merge changelog
         run: |
+          SOURCE=develop
+          TARGET=master
           CURRENT_BRANCH=$(git branch --show-current)
-          if [ "$CURRENT_BRANCH" != "develop" ]; then
+          if [ "$CURRENT_BRANCH" != "$TARGET" ]; then
             git checkout develop
           fi
-          git pull origin develop
-          if git merge --no-ff --allow-unrelated-histories origin/master -m "Merge branch 'master' into develop"; then
-            echo "Merge successful for branch develop"
-            git push origin develop
+          git pull origin $TARGET
+          if git merge --no-ff --allow-unrelated-histories origin/$SOURCE -m "Merge branch '$SOURCE' into $TARGET"; then
+            echo "Merge successful for branch $TARGET"
+            git push origin $TARGET
           else
-            echo "Merge conflict or error occurred for branch $branch. Skipping..."
+            echo "Merge conflict or error occurred for branch $SOURCE. Skipping..."
             git merge --abort
             exit 1
           fi
