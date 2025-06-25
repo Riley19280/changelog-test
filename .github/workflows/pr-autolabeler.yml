@@ -1,12 +1,12 @@
-name: Label PR Based on JIRA Issue
+name: Label PRs
 
 on:
   pull_request:
     types: [opened]
 
 jobs:
-  label-jira:
-    name: Apply Labels
+  jira-label:
+    name: Jira Label
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
