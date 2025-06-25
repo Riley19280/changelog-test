@@ -27,7 +27,7 @@ jobs:
         id: jira
         if: steps.extract.outputs.result != ''
         run: |
-          ISSUE_KEY="${{ steps.extract.outputs.result }}"
+          ISSUE_KEY=${{ steps.extract.outputs.result }}
           echo "Using issue key: $ISSUE_KEY"
 
           RESPONSE=$(curl -s -u "${{ secrets.JIRA_EMAIL }}:${{ secrets.JIRA_API_TOKEN }}" \
