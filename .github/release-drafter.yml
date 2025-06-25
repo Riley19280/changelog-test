@@ -1,4 +1,4 @@
-name-template: 'v$RESOLVED_VERSION 🌈'
+name-template: 'Maple v$RESOLVED_VERSION'
 tag-template: 'v$RESOLVED_VERSION'
 categories:
   - title: '🚀 Features'
@@ -11,7 +11,9 @@ categories:
       - 'bugfix'
       - 'bug'
   - title: '🧰 Maintenance'
-    label: 'chore'
+    labels:
+      - 'chore'
+      - 'tech debt'
 change-template: '- $TITLE @$AUTHOR (#$NUMBER)'
 change-title-escapes: '\<*_&' # You can add # and @ to disable mentions, and add ` to disable code blocks.
 version-resolver:
@@ -25,6 +27,9 @@ version-resolver:
     labels:
       - 'patch'
   default: patch
+replacers:
+  - search: '/BCP-(\d+)/g'
+    replace: 'https://proactivedealersolutions.atlassian.net/browse/BCP-$1'
 template: |
   ## Changes
 
